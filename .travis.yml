@@ -22,3 +22,17 @@ after_success:
   - docker push aeghobor/multidocker-nginx
   - docker push aeghobor/multidocker-server
   - docker push aeghobor/multidocker-worker
+
+deploy:
+  provider: elasticbeanstalk
+  region: "eu-west-1"
+  app: "multi-docker"
+  env: "MultiDocker-env"
+  bucket_name: "elasticbeanstalk-eu-west-1-336209744632"
+  bucket_path: "multi-docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
+~

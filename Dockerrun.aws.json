@@ -1,0 +1,38 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "client",
+        "image": "aeghobor/multidocker-client",
+        "hostname": "client",
+        "essential": "false"
+      },
+      {
+        "name": "server",
+        "image": "aeghobor/multidocker-server",
+        "hostname": "server",
+        "essential": "api"
+      },
+      {
+        "name": "worker",
+        "image": "aeghobor/multidocker-worker",
+        "hostname": "worker",
+        "essential": "false"
+      },
+      {
+        "name": "nginx",
+        "image": "aeghobor/multidocker-nginx",
+        "hostname": "nginx",
+        "essential": "true",
+        "portMappings":[
+          {
+            "hostPort":80,
+            "containerPort":80
+
+          }
+
+        ],
+        "links":["client", "server"]
+      }
+    ]
+}
