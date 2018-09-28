@@ -17,7 +17,7 @@ after_success:
   #push the images to dockerhub
   #but before then we need to login docker cli with the account which automatically links with dockerhub
   #set these variables in travis-ci and then run the command below to login.
-  - echo "DOCKER_PASSWORD" | docker login -u "DOCKER_ID" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   - docker push aeghobor/multidocker-client
   - docker push aeghobor/multidocker-nginx
   - docker push aeghobor/multidocker-server
